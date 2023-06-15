@@ -1,0 +1,18 @@
+.channel {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.channel img {
+  max-width: 200px;
+  height: auto;Ï
+}
+
+.channel h3 {
+  margin-top: 0;
+}
+
+.channel p {
+  margin-bottom: 0;
+}

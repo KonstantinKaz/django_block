@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="channelName">Название канала:</label>
+  <input type="text" id="channelName" name="channelName" required><br>
+  <label for="image">Изображение:</label>
+  <input type="file" id="image" name="image"><br>
+  <label for="article_title">Название статьи:</label>
+  <input type="text" id="article_title" name="article_title" required><br>
+  <label for="article_description">Описание статьи:</label>
+  <textarea id="article_description" name="article_description" required></textarea><br>
+  <input type="submit" value="Создать канал">
+</form>
+{% endblock %}

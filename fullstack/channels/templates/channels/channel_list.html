@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+{% for channel in channels %}
+  <div class="channel">
+    <img src="{% static 'channels/img/' %}{{ channel.image.url|basename }}" alt="{{ channel.channelName }}">
+    <h3>{{ channel.channelName }}</h3>
+    <p>Created: {{ channel.created_date }}</p>
+    <h4>{{ channel.article_title }}</h4>
+    <p>{{ channel.article_description }}</p>
+    <a href="{% url 'edit_channel' channel.id %}">Edit</a>
+    <form action="{% url 'delete_channel' channel.id %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+{% empty %}
+  <p>No channels available.</p>
+{% endfor %}
+{% endblock %}
