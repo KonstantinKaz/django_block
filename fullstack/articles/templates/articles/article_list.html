@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+  <div class="articles">
+    <h2>Article List</h2>
+    <a href="{% url 'create_article' %}">Create</a>
+    <ul>
+      {% for article in articles %}
+        <li>
+          {{ article.article_title }}
+          <a href="{% url 'edit_article' article.id %}">Edit</a>
+          <form action="{% url 'delete_article' article.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+{% endblock %}

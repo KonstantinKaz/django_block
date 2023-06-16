@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
-<h2>Редактирование канала</h2>
-
+<h2>Edit Article</h2>
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Сохранить</button>
+  <button type="submit">Update</button>
 </form>
-
 {% endblock %}

@@ -7,4 +7,3 @@ urlpatterns = [
     path('delete/<int:channel_id>/', delete_channel, name='delete_channel'),
     path('<int:channel_id>/edit/', edit_channel, name='edit_channel'),
 ]
-
