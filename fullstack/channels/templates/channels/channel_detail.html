@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load custom_filters %}
+
 {% block content %}
-<h1>{{ channel.channelName }}</h1>
-{% for article in articles %}
-  <div class="article">
-    <h2>{{ article.article_title }}</h2>
-    <p>{{ article.article_content }}</p>
-    <!-- Добавьте здесь любую другую информацию о статье, которую вы хотите отобразить -->
-  </div>
-{% empty %}
-<p>No articles available for this channel.</p>
-{% endfor %}
+  <h2>{{ channel.channelName }}</h2>
+
+  {% for article in articles %}
+    <div class="article">
+      <h3><a href="{% url 'article_detail' article.id %}">{{ article.article_title }}</a></h3>
+      <p>{{ article.article_content }}</p>
+      <!-- Добавьте здесь любую другую информацию о статье, которую вы хотите отобразить -->
+    </div>
+  {% empty %}
+    <p>No articles available for this channel.</p>
+  {% endfor %}
 {% endblock %}

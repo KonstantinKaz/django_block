@@ -7,10 +7,7 @@
   <div class="channel">
     <a href="{% url 'channel_detail' channel.id %}">
       <div>
-        <img
-          src="{{ channel.image.url }}"
-          alt="{{ channel.channelName }}"
-        />
+        <img src="{% static 'channels/img/' %}{{ channel.image.url|basename }}" alt="{{ channel.channelName }}">
         <h3>{{ channel.channelName }}</h3>
       </div>
     </a>
