@@ -1,19 +1,16 @@
-# from django.urls import path
-# from . import views
-#
-# urlpatterns = [
-#     path('channels/<int:channel_id>/', views.channel_articles, name='channel_articles'),
-#     path('create/<int:channel_id>/', views.create_article, name='create_article'),
-#     path('delete/<int:article_id>/', views.delete_article, name='delete_article'),
-#     path('edit/<int:article_id>/', views.edit_article, name='edit_article'),
-# ]
-
 from django.urls import path
-from . import views
+from articles.views import *
+from comments.views import *
+
 
 urlpatterns = [
-    path('', views.article_list, name='article_list'),
-    path('create/', views.create_article, name='create_article'),
-    path('edit/<int:article_id>/', views.edit_article, name='edit_article'),
-    path('delete/<int:article_id>/', views.delete_article, name='delete_article'),
+    path('', article_list, name='article_list'),
+    path('create/', create_article, name='create_article'),
+    path('edit/<int:article_id>/', edit_article, name='edit_article'),
+    path('delete/<int:article_id>/', delete_article, name='delete_article'),
+    path('detail/<int:article_id>/', article_detail, name='article_detail'),
+    path('comments/create/<int:article_id>/', create_comment, name='create_comment'),
+    path('comments/edit/<int:comment_id>/', edit_comment, name='edit_comment'),
+    path('comments/delete/<int:comment_id>/', delete_comment, name='delete_comment'),
 ]
+

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'authentication',
     'channels',
     'articles',
+    'comments',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'fullstack.urls'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 TEMPLATES = [
     {
@@ -125,3 +130,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+

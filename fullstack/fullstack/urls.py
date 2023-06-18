@@ -24,9 +24,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('accounts/', include('authentication.urls')),
     path('channels/', include('channels.urls')),
-    path('channels/', include('channels.urls')),
     path('articles/', include('articles.urls')),
-
 ]
 
 

@@ -9,7 +9,14 @@
     <ul>
       {% for article in articles %}
         <li>
-          {{ article.article_title }}
+          <a href="{% url 'article_detail' article_id=article.id %}" class="articles">
+            <div>
+              {{ article.article_title }}
+              {{ article.article_description }}
+            </div>
+
+
+          </a>
           <a href="{% url 'edit_article' article.id %}">Edit</a>
           <form action="{% url 'delete_article' article.id %}" method="post">
             {% csrf_token %}
