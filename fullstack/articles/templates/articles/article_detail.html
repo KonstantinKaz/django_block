@@ -7,6 +7,12 @@
   <h3>{{ article.article_title }}</h3>
   <p>{{ article.article_description }}</p>
 
+  <!-- Добавить кнопку "Добавить в избранное" -->
+  <form method="POST" action="{% url 'add_to_favorites' article.id %}">
+    {% csrf_token %}
+    <button type="submit">Добавить в избранное</button>
+  </form>
+
   <h3>Comments</h3>
   <ul>
     {% for comment in comments %}

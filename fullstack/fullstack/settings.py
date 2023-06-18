@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'channels',
     'articles',
     'comments',
+    'favorites',
 ]
 
 MIDDLEWARE = [

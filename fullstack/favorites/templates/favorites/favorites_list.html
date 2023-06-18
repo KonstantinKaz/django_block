@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h2>Избранные статьи</h2>
+
+  {% if favorites %}
+    <ul>
+      {% for favorite in favorites %}
+        <li>
+          <h3>{{ favorite.article.article_title }}</h3>
+          <p>{{ favorite.article.article_description }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>У вас нет избранных статей.</p>
+  {% endif %}
+{% endblock %}
