@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'articles',
     'comments',
     'favorites',
+    'subscriptions',
 ]
 
 MIDDLEWARE = [

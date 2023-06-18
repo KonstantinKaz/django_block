@@ -6,4 +6,5 @@ urlpatterns = [
     path('create/', create_channel, name='create_channel'),
     path('delete/<int:channel_id>/', delete_channel, name='delete_channel'),
     path('<int:channel_id>/edit/', edit_channel, name='edit_channel'),
+    path('<int:channel_id>/', channel_detail, name='channel_detail'),  # Добавлен URL-шаблон для отображения статей канала
 ]

@@ -2,18 +2,16 @@
 {% load static %}
 {% load custom_filters %}
 {% block content %}
+<a href="{% url 'create_channel' %}">Создать канал</a>
 {% for channel in channels %}
   <div class="channel">
-    <a href="{% url 'create_channel' %}">Create</a>
-    <a href="">
+    <a href="{% url 'article_detail' channel.id %}">
       <div>
-
-          <!-- Добавлен аргумент channel.id в URL -->
-          <img
-            src="{% static 'channels/img/' %}{{ channel.image.url|basename }}"
-            alt="{{ channel.channelName }}"
-          />
-          <h3>{{ channel.channelName }}</h3>
+        <img
+          src="{{ channel.image.url }}"
+          alt="{{ channel.channelName }}"
+        />
+        <h3>{{ channel.channelName }}</h3>
       </div>
     </a>
     <a href="{% url 'edit_channel' channel.id %}">Edit</a>
@@ -21,6 +19,19 @@
       {% csrf_token %}
       <button type="submit">Delete</button>
     </form>
+    {% if request.user.is_authenticated %}
+      {% if channel in subscriptions %}
+        <form action="{% url 'unsubscribe_channel' channel.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Отписаться</button>
+        </form>
+      {% else %}
+        <form action="{% url 'subscribe_channel' channel.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Подписаться</button>
+        </form>
+      {% endif %}
+    {% endif %}
   </div>
 {% empty %}
 <p>No channels available.</p>

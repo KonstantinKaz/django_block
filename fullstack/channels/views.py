@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Channel
 from .forms import ChannelForm
+from articles.models import Article
 
 
 # Остальные представления остаются без изменений
@@ -41,4 +42,10 @@ def edit_channel(request, channel_id):
 
     return render(request, 'channels/edit_channel.html', {'form': form, 'channel': channel})
 
+
+
+def channel_detail(request, channel_id):
+    channel = get_object_or_404(Channel, id=channel_id)
+    articles = Article.objects.filter(channel=channel)  # Получаем все статьи, принадлежащие каналу
+    return render(request, 'channels/channel_detail.html', {'channel': channel, 'articles': articles})
 
