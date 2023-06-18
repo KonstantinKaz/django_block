@@ -7,7 +7,8 @@
   {% if subscriptions %}
     <ul>
       {% for subscription in subscriptions %}
-        <li>{{ subscription.channel.channelName }}</li>
+
+        <li><a href="{% url 'channel_detail' subscription.channel.id %}">{{ subscription.channel.channelName }}</a></li>
       {% endfor %}
     </ul>
   {% else %}

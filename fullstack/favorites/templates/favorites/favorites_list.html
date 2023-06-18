@@ -8,7 +8,9 @@
     <ul>
       {% for favorite in favorites %}
         <li>
-          <h3>{{ favorite.article.article_title }}</h3>
+          <a href="{% url 'article_detail' favorite.article.id %}">
+            <h3>{{ favorite.article.article_title }}</h3>
+          </a>
           <p>{{ favorite.article.article_description }}</p>
         </li>
       {% endfor %}
