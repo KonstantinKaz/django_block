@@ -3,7 +3,7 @@
 
 {% block content %}
   <h2>{{ channel.channelName }}</h2>
-
+  <a href="{% url 'create_article' channel.id %}">Создать статью</a>
   {% for article in articles %}
     <div class="article">
       <h3><a href="{% url 'article_detail' article.id %}">{{ article.article_title }}</a></h3>

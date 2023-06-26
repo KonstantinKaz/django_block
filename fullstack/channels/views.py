@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Channel
 from .forms import ChannelForm
 from articles.models import Article
+from django.contrib.auth.decorators import login_required
+
 
 
 # Остальные представления остаются без изменений
@@ -11,15 +13,17 @@ def channel_list(request):
     return render(request, 'channels/channel_list.html', {'channels': channels})
 
 
+@login_required
 def create_channel(request):
     if request.method == 'POST':
         form = ChannelForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            channel = form.save(commit=False)
+            channel.owner = request.user
+            channel.save()
             return redirect('channel_list')
     else:
         form = ChannelForm()
-
     return render(request, 'channels/create_channel.html', {'form': form})
 
 

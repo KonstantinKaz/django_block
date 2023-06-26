@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Online Store</title>
+    <title>BLog</title>
 </head>
 <body>
     <header>
         <a href="#">Logo</a>
         <nav>
             <ul>
+                <li><a class="header__link" href="{% url 'channel_list' %}">Каналы</a></li>
+                <li><a class="header__link" href="{% url 'favorites_list' %}">Избранное</a></li>
+                <li><a class="header__link" href="{% url 'subscription_list' %}">Подписки</a></li>
                 {% if user.is_authenticated %}
-                <li>{{ user.username }}</li>
-                <li><a href="{% url 'logout' %}">Выйти</a></li>
+                    <li>{{ user.username }}</li>
+                    <li><a class="header__reg-link" href="{% url 'logout' %}">Выйти</a></li>
                 {% else %}
-                <li><a href="{% url 'register' %}">Зарегистрироваться</a></li>
-                <li><a href="{% url 'login' %}">Войти</a></li>
+                    <li><a class="header__reg-link" class="header__link" href="{% url 'register' %}">Зарегистрироваться</a></li>
+                    <li><a class="header__reg-link" class="header__link" href="{% url 'login' %}">Войти</a></li>
                 {% endif %}
             </ul>
         </nav>

@@ -5,7 +5,6 @@
 {% block content %}
   <div class="articles">
     <h2>Article List</h2>
-    <a href="{% url 'create_article' %}">Create</a>
     <ul>
       {% for article in articles %}
         <li>
